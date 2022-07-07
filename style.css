@@ -39,8 +39,8 @@ body {
 #popup-container {
     background-color: rgba(0, 0, 0, 0.3);
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 135px ;
+    left: 0 ;
     right: 0;
     bottom: 0;
     /* display: flex; */
