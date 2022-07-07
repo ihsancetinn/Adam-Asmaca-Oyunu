@@ -3,7 +3,7 @@ const popup = document.getElementById('popup-container');
 const message_el = document.getElementById('success-message');
 const wrongLetters_el = document.getElementById('wrong-letters');
 const items = document.querySelectorAll('.item');
-
+const message = document.getElementById("message");
 
 
 
@@ -50,10 +50,17 @@ function updateWrongLetters() {
         popup.style.display = 'flex';
         popup.style.color= 'red';
         message_el.innerText = ' Kaybettiniz 😲';
-    }t
+    }
 
 }
 
+function displayMessage() {
+
+    message.classList.add('show');
+    setTimeout(function() {
+message.classList.remove('show');
+    },2000)
+}
 
 window.addEventListener('keydown', function (e) {
 
@@ -64,13 +71,15 @@ window.addEventListener('keydown', function (e) {
                 correctLetters.push(letter);
                 displayWord();
             } else {
-                alert("Bu Harf Zaten Eklidir.")
-
+                displayMessage();
+               
             }
         } else {
             if (!wrongLetters.includes(letter)) {
                 wrongLetters.push(letter);
                 updateWrongLetters();
+            } else {
+                displayMessage();
             }
 
         }
