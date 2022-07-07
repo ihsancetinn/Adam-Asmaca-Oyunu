@@ -5,6 +5,7 @@ const wrongLetters_el = document.getElementById('wrong-letters');
 const items = document.querySelectorAll('.item');
 const message = document.getElementById("message");
 const PlayAgainBtn = document.getElementById('play-again');
+const resetBtn = document.getElementById('btn');
 
 
 
@@ -17,7 +18,6 @@ function getRandomWord() {
     return words[Math.floor(Math.random() * words.length)];
 
 };
-
 
 function displayWord() {
     word_el.innerHTML = `
@@ -64,6 +64,7 @@ function displayMessage() {
     }, 2000)
 };
 
+
 PlayAgainBtn.addEventListener('click', function () {
 
 correctLetters.splice(0);
@@ -73,7 +74,7 @@ displayWord();
 updateWrongLetters();
 popup.style.display = 'none';
 
-})
+});
 
 window.addEventListener('keydown', function (e) {
 
