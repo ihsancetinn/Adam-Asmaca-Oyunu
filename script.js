@@ -38,16 +38,19 @@ function updateWrongLetters() {
     ${wrongLetters.map(letter => `<span>${letter}</span>`)}
     `;
 
-items.forEach((item,index) =>{
-    const errorCount = wrongLetters.length;
-     if(index<errorCount){
-        item.style.display = 'block';
-     } else {
-        item.style.display = 'none';
-     }
-
-
-})
+    items.forEach((item, index) => {
+        const errorCount = wrongLetters.length;
+        if (index < errorCount) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    })
+    if(wrongLetters.length === items.length) {
+        popup.style.display = 'flex';
+        popup.style.color= 'red';
+        message_el.innerText = ' Kaybettiniz 😲';
+    }t
 
 }
 
