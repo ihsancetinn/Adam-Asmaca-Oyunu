@@ -4,15 +4,16 @@ const message_el = document.getElementById('success-message');
 const wrongLetters_el = document.getElementById('wrong-letters');
 const items = document.querySelectorAll('.item');
 const message = document.getElementById("message");
+const PlayAgainBtn = document.getElementById('play-again');
 
 
 
 const correctLetters = [];
 const wrongLetters = [];
-const selectedWord = getRandomWord();
+let selectedWord = getRandomWord();
 
 function getRandomWord() {
-    const words = ['javascrıpt', 'python', 'java', 'django', 'reactjs', 'angularjs', 'vuejs', 'typescrıpt', 'nodejs', 'nextjs'];
+    const words = ['javascrıpt', 'python', 'java', 'django', 'reactjs', 'angularjs', 'vuejs', 'typescrıpt', 'nodejs', 'nextjs','css','scss','html'];
     return words[Math.floor(Math.random() * words.length)];
 
 };
@@ -27,7 +28,8 @@ function displayWord() {
     const w = word_el.innerText.replace(/\n/g, '');
     if (w === selectedWord) {
         popup.style.display = 'flex';
-        message_el.innerText = 'Tebrikler Kazandınız. \n 🎉🥳🎊';
+        let x = wrongLetters.length
+        message_el.innerText = `Tebrikler ${x === 0 ? 'İlk':`${x}`} Adımda Kazandınız. \n 🎉🥳🎊`;
     }
 
 };
@@ -46,21 +48,32 @@ function updateWrongLetters() {
             item.style.display = 'none';
         }
     })
-    if(wrongLetters.length === items.length) {
+    if (wrongLetters.length === items.length) {
         popup.style.display = 'flex';
-        popup.style.color= 'red';
+        popup.style.color = 'red';
         message_el.innerText = ' Kaybettiniz 😲';
     }
 
-}
+};
 
 function displayMessage() {
 
     message.classList.add('show');
-    setTimeout(function() {
-message.classList.remove('show');
-    },2000)
-}
+    setTimeout(function () {
+        message.classList.remove('show');
+    }, 2000)
+};
+
+PlayAgainBtn.addEventListener('click', function () {
+
+correctLetters.splice(0);
+wrongLetters.splice(0);
+selectedWord = getRandomWord();
+displayWord();
+updateWrongLetters();
+popup.style.display = 'none';
+
+})
 
 window.addEventListener('keydown', function (e) {
 
@@ -72,7 +85,7 @@ window.addEventListener('keydown', function (e) {
                 displayWord();
             } else {
                 displayMessage();
-               
+
             }
         } else {
             if (!wrongLetters.includes(letter)) {
@@ -84,6 +97,6 @@ window.addEventListener('keydown', function (e) {
 
         }
     }
-})
+});
 
 displayWord();
