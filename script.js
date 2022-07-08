@@ -7,8 +7,6 @@ const message = document.getElementById("message");
 const PlayAgainBtn = document.getElementById('play-again');
 const resetBtn = document.getElementById('btn');
 
-
-
 const correctLetters = [];
 const wrongLetters = [];
 let selectedWord = getRandomWord();
@@ -31,7 +29,6 @@ function displayWord() {
         let x = wrongLetters.length
         message_el.innerText = `Tebrikler ${x === 0 ? 'İlk':`${x}`} Adımda Kazandınız. \n 🎉🥳🎊`;
     }
-
 };
 function updateWrongLetters() {
 
@@ -53,7 +50,6 @@ function updateWrongLetters() {
         popup.style.color = 'red';
         message_el.innerText = ' Kaybettiniz 😲';
     }
-
 };
 
 function displayMessage() {
